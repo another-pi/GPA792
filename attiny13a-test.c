@@ -15,7 +15,7 @@
 #define F_CPU 9600000
 
 // PWM initial de 100%
-int i = 100;
+int i = 50;
 
 // Programme principal
 int main (void)
@@ -23,15 +23,15 @@ int main (void)
   // Configure Port 4 en sortie
   DDRB |= (1<<DDB4);
   // Configure Port 1 en entrée
-  DDRB &= ~(1<<DDB1);
+  // DDRB &= ~(1<<DDB1);
   // Active résistance Pull-Up sur Port 1
-  PORTB |= (1<<PORTB1);
+  // PORTB |= (1<<PORTB1);
   // Active les interruptions sur le Port 1 (INT0)
-  GIMSK |= (1<<INT0);
+  // GIMSK |= (1<<INT0);
   // Détection au front montant pour le Port 1 (INT0)
-  MCUCR = (1<<ISC01)|(1<<ISC00);
+  // MCUCR = (1<<ISC01)|(1<<ISC00);
   // Démarre les interruptions globales
-  sei();
+  // sei();
   // Compteur de microsecondes
   int us = 0;
 
@@ -66,7 +66,7 @@ int main (void)
 }
 
 // Interruption du bouton momentané (Port 0)
-ISR(INT0_vect)
+/*ISR(INT0_vect)
 {
   // Anti-rebondissement (debounce)
   PORTB &= ~(1<<PORTB4);
@@ -83,4 +83,4 @@ ISR(INT0_vect)
   {
     i = 100;
   }
-}
+}*/
