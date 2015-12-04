@@ -9,19 +9,19 @@
 //
 
 #include <avr/io.h>
-#include <avr/interrupt.h>
+//#include <avr/interrupt.h>
 #include <util/delay.h>
  
 #define F_CPU 9600000
 
-// PWM initial de 100%
+// Duty-Cycle initial
 int i = 50;
 
 // Programme principal
 int main (void)
 {
   // Configure Port 4 en sortie
-  DDRB |= (1<<DDB4);
+  DDRB |= (1 << DDB4);
   // Configure Port 1 en entrée
   // DDRB &= ~(1<<DDB1);
   // Active résistance Pull-Up sur Port 1
@@ -41,7 +41,7 @@ int main (void)
 
     // Génération du PWM
     // Met le port 4 à ON
-    PORTB = (1<<PORTB4);
+    PORTB = (1 << PORTB4);
 
     // Délais ON
     us = (100-i)/2;
@@ -52,7 +52,7 @@ int main (void)
     }
  
     // Met le Port à OFF
-    PORTB &= ~(1<<PORTB4);
+    PORTB &= ~(1 << PORTB4);
  
     // Délais OFF
     us = i/2;
